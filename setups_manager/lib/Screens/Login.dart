@@ -1,9 +1,11 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:setups_manager/Screens/Home.dart';
+import 'package:setups_manager/Services/authentication.dart';
 import 'package:setups_manager/Utilities/constants.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({Key key}) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -14,6 +16,8 @@ class _LoginState extends State<Login> {
 
   final _username = TextEditingController(text: "");
   final _password = TextEditingController(text: "");
+
+  final AuthenticationService _auth = AuthenticationService();
 
   Widget _buildUsernameTF() {
     return Column(
@@ -122,10 +126,18 @@ class _LoginState extends State<Login> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () {
+        onPressed: () async {
           print("Login Button Pressed");
-          if (_formKey.currentState!.validate()) {
+          if (_formKey.currentState.validate()) {
             // Spin
+            dynamic result = await _auth.signInAnon();
+            if (result == null) {
+              print('ERROR: in Login');
+            } else {
+              print('Logged in');
+              print(result);
+              print(result.uid);
+            }
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Home()),
