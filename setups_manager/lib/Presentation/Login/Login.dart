@@ -1,6 +1,8 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:setups_manager/Screens/Home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:setups_manager/Presentation/Home/Home.dart';
+import 'package:setups_manager/Presentation/Home/bloc/home_bloc.dart';
 import 'package:setups_manager/Services/authentication.dart';
 import 'package:setups_manager/Utilities/constants.dart';
 
@@ -17,7 +19,7 @@ class _LoginState extends State<Login> {
   final _username = TextEditingController(text: "");
   final _password = TextEditingController(text: "");
 
-  final AuthenticationService _auth = AuthenticationService();
+  // final AuthenticationService _auth = AuthenticationService();
 
   Widget _buildUsernameTF() {
     return Column(
@@ -60,7 +62,8 @@ class _LoginState extends State<Login> {
             // The validator receives the text that the user has entered.
             validator: (value) {
               if (value != "sm_admin") {
-                return 'Incorrect Username';
+                // return 'Incorrect Username';
+                return '';
               }
               return null;
             },
@@ -110,7 +113,8 @@ class _LoginState extends State<Login> {
             // The validator receives the text that the user has entered.
             validator: (value) {
               if (value != "password") {
-                return 'Incorrect Password';
+                // return 'Incorrect Password';
+                return '';
               }
               return null;
             },
@@ -130,18 +134,26 @@ class _LoginState extends State<Login> {
           print("Login Button Pressed");
           if (_formKey.currentState.validate()) {
             // Spin
-            dynamic result = await _auth.signInAnon();
-            if (result == null) {
-              print('ERROR: in Login');
-            } else {
-              print('Logged in');
-              print(result);
-              print(result.uid);
-            }
+            // dynamic result = await _auth.signInAnon();
+            // if (result == null) {
+            //   print('ERROR: in Login');
+            // } else {
+            // MaterialPageRoute(
+            //     builder: (_) => BlocProvider(
+            //           create: (context) => HomeBloc(),
+            //           child: Home(),
+            //         ));
+
             Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Home()),
-            );
+                context,
+                MaterialPageRoute(
+                    builder: (_) => BlocProvider(
+                          create: (context) => HomeBloc(),
+                          child: Home(),
+                        )));
+
+            // print('Logged in: ${result.uid}');
+            // }
           } else {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
