@@ -1,11 +1,11 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:setups_manager/Data/Models/setups_manager_user.dart';
-import 'package:setups_manager/Presentation/Home/Home.dart';
+// import 'package:provider/provider.dart';
+// import 'package:setups_manager/Data/Models/setups_manager_user.dart';
+// import 'package:setups_manager/Presentation/Home/Home.dart';
 import 'package:setups_manager/Presentation/Login/Login.dart';
-import 'package:setups_manager/Screens/Wrapper.dart';
-import 'package:setups_manager/Services/authentication.dart';
+// import 'package:setups_manager/Screens/Wrapper.dart';
+// import 'package:setups_manager/Services/authentication.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'SM',
       home: Login(),
     );
     // return Scaffold(

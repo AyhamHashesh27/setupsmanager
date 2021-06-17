@@ -6,10 +6,10 @@ class Setup {
   String inUseBy;
   String name;
   bool nuage;
-  String pack;
+  String hotfix;
   String state;
-  String type;
-  String userFor;
+  String cephDeploymentType;
+  String usedFor;
   String version;
   DateTime lastEdit;
 
@@ -20,10 +20,10 @@ class Setup {
       this.inUseBy,
       this.name,
       this.nuage,
-      this.pack,
+      this.hotfix,
       this.state,
-      this.type,
-      this.userFor,
+      this.cephDeploymentType,
+      this.usedFor,
       this.version,
       this.lastEdit});
 
@@ -34,10 +34,11 @@ class Setup {
     inUseBy = json['inUseBy'];
     name = json['name'];
     nuage = json['nuage'];
-    pack = json['pack'];
+    hotfix = json['hotfix'];
     state = json['state'];
-    type = json['type'];
-    userFor = json['userFor'];
+
+    cephDeploymentType = json['cephDeploymentType'];
+    usedFor = json['usedFor'];
     version = json['version'];
     lastEdit = json['lastEdit'].toDate();
   }
@@ -49,10 +50,10 @@ class Setup {
     data['inUseBy'] = this.inUseBy;
     data['name'] = this.name;
     data['nuage'] = this.nuage;
-    data['pack'] = this.pack;
+    data['hotfix'] = this.hotfix;
     data['state'] = this.state;
-    data['type'] = this.type;
-    data['userFor'] = this.userFor;
+    data['cephDeploymentType'] = this.cephDeploymentType;
+    data['usedFor'] = this.usedFor;
     data['version'] = this.version;
     data['lastEdit'] = this.lastEdit;
     return data;

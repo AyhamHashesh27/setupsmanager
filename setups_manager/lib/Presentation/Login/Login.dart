@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setups_manager/Presentation/Home/Home.dart';
 import 'package:setups_manager/Presentation/Home/bloc/home_bloc.dart';
-import 'package:setups_manager/Services/authentication.dart';
+// import 'package:setups_manager/Services/authentication.dart';
 import 'package:setups_manager/Utilities/constants.dart';
 
 class Login extends StatefulWidget {
@@ -138,19 +138,22 @@ class _LoginState extends State<Login> {
             // if (result == null) {
             //   print('ERROR: in Login');
             // } else {
-            // MaterialPageRoute(
-            //     builder: (_) => BlocProvider(
-            //           create: (context) => HomeBloc(),
-            //           child: Home(),
-            //         ));
 
-            Navigator.push(
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (_) => BlocProvider(
                           create: (context) => HomeBloc(),
                           child: Home(),
                         )));
+
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (_) => BlocProvider(
+            //               create: (context) => HomeBloc(),
+            //               child: Home(),
+            //             )));
 
             // print('Logged in: ${result.uid}');
             // }
@@ -239,16 +242,16 @@ class _LoginState extends State<Login> {
                       height: 30.0,
                     ),
                     _buildLoginBtn(),
-                    Center(
-                      child: Text(
-                        'Developed by Quality Assurance Maintenance Team to follow the setups easily',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
+                    // Center(
+                    //   child: Text(
+                    //     'Developed by Quality Assurance Maintenance Team to follow the setups easily',
+                    //     textAlign: TextAlign.center,
+                    //     style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontSize: 16,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
